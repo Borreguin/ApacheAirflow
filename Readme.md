@@ -13,3 +13,19 @@ Here a summary of instructions:
 2. Create .env file to give permissions: echo -e "AIRFLOW_UID=$(id -u) \nAIRFLOW_GID=0" > .env
 3. Run the docker container: docker-compose up airflow-init
 4. Once the airflow user was created then run: docker-compose up
+
+## In case you want to connect to the Postgresql DB:
+
+**Credentials:** user: `airflow`, pass: `airflow`
+
+1. Check which port is open for the postgres service. [Click here:](https://github.com/Borreguin/ApacheAirflow/blob/52b468a589f013c1c63ad6589770c72c9db99bb8/docker-compose.yaml#L93)
+2. Test the connection using any DB Manager: 
+![DBManager](images/SQLConnection.PNG)
+3. In AirFlow create the connection as follows:
+![AirFlowConnection](images/airflowDBConnection.PNG)
+
+## To configure for sending emails:
+
+1. Search section `[smtp]` in file [airflow.cfg](config/airflow.cfg)
+2. Fill this section according this [explanation](https://naiveskill.com/send-email-from-airflow/) 
+3. Allow your account send emails: [Enable IMAP for your account](https://hevodata.com/learn/airflow-emailoperator/)
